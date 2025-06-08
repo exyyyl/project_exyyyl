@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import ParticleAnimation from './ParticleAnimation.vue';
 
 interface Props {
   isEmpty?: boolean;
