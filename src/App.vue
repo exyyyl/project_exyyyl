@@ -14,7 +14,7 @@ const tabs = [
 
 <template>
   <header>
-    <div class="logo"><p class="logo-text"><a href="/">project exyyyl</a></p>
+    <div class="logo"><p class="logo-text"><a href="#" @click.prevent="activeTab = 'PROJECTS'">project exyyyl</a></p>
       <Version />
     </div>
 
@@ -65,6 +65,12 @@ header {
 .logo-text a {
   text-decoration: none;
   color: #fff;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.logo-text a:hover {
+  opacity: 0.8;
 }
 
 .logo {
