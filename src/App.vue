@@ -156,7 +156,7 @@ header {
   right: 0;
   background-color: #1a1a1a;
   border-top: 1px solid #fff;
-  display: none;
+  display: none; /* По умолчанию скрываем */
   z-index: 1000;
   padding: 10px 0;
 }

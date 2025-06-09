@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-const version = '1.0';
+const version = '1.01';
 </script>
 
 <style scoped>
