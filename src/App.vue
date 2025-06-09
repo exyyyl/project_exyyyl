@@ -3,6 +3,8 @@ import { ref } from 'vue';
 import Version from './components/Version.vue';
 import Layout from './components/Layout.vue';
 import IconComponent from './components/IconComponent.vue';
+import UpdatesList from './components/UpdatesList.vue';
+import UpdateDetails from './components/UpdateDetails.vue';
 
 const activeTab = ref('PROJECTS');
 
@@ -11,12 +13,48 @@ const tabs = [
   { name: 'LAB', content: 'Идеи для экспериментов' },
   { name: 'GAMES', content: 'Тут когда-нибудь будут игры' }
 ];
+
+const updates = ref([
+  { id: 1, version: '1.01', title: 'Первый апдейт', description: '- Мини обнова, добавляющая детали обновлений.' },
+]);
+
+const selectedUpdate = ref<{ id: number; version: string; title: string; description: string; } | null>(null);
+const showUpdates = ref(false);
+
+const handleUpdateSelected = (update: { id: number; version: string; title: string; description: string; }) => {
+  selectedUpdate.value = update;
+  showUpdates.value = false;
+};
+
+const toggleUpdates = () => {
+  showUpdates.value = !showUpdates.value;
+  selectedUpdate.value = null;
+};
+
+const closeUpdatesList = () => {
+  showUpdates.value = false;
+};
+
+const closeUpdateDetails = () => {
+  selectedUpdate.value = null;
+};
 </script>
 
 <template>
   <header>
-    <div class="logo"><p class="logo-text"><a href="#" @click.prevent="activeTab = 'PROJECTS'">project exyyyl</a></p>
-      <Version />
+    <div class="logo">
+      <p class="logo-text">
+        <a href="#" @click.prevent="activeTab = 'PROJECTS'">project exyyyl</a>
+      </p>
+      <div class="version-container">
+        <Version @toggleUpdates="toggleUpdates" />
+        <UpdatesList 
+          v-if="showUpdates" 
+          :updates="updates" 
+          @updateSelected="handleUpdateSelected"
+          @close="closeUpdatesList"
+        />
+      </div>
     </div>
 
     <ul class="header-menu">
@@ -34,7 +72,11 @@ const tabs = [
     </Layout>
   </main>
 
-  <!-- Нижнее меню для мобильных устройств -->
+  <UpdateDetails 
+    :update="selectedUpdate" 
+    @close="closeUpdateDetails"
+  />
+
   <nav class="bottom-nav">
     <div 
       v-for="tab in tabs" 
@@ -101,6 +143,10 @@ header {
   flex-direction: row;
   align-items: center;
   gap: 10px;
+}
+
+.version-container {
+  position: relative;
 }
 
 .header-menu {

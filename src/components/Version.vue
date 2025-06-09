@@ -1,11 +1,18 @@
 <template>
-  <div class="version">
+  <div class="version" @click="toggleUpdates">
     <span> v{{ version }}</span>
   </div>
 </template>
 
 <script setup lang="ts">
+import { defineEmits } from 'vue';
+
 const version = '1.01';
+const emit = defineEmits(['toggleUpdates']);
+
+const toggleUpdates = () => {
+  emit('toggleUpdates');
+};
 </script>
 
 <style scoped>
