@@ -16,6 +16,15 @@ const version = '1.0';
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
-}   
+}
+
+/* Мобильная адаптация */
+@media (max-width: 480px) {
+  .version {
+    font-size: 10px;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+}
 
 </style>

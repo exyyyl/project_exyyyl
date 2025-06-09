@@ -54,4 +54,30 @@ const props = withDefaults(defineProps<Props>(), {
     opacity: 0.7;
   }
 }
+
+/* Адаптация для планшетов и мобильных устройств */
+@media (max-width: 1024px) {
+  .layout-container {
+    padding: 25px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .layout-container {
+    padding: 20px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout-container {
+    padding: 15px;
+    border-radius: 6px;
+  }
+
+  .layout-content {
+    font-size: 14px;
+  }
+}
 </style>
