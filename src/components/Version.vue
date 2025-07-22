@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { defineEmits } from 'vue';
 
-const version = '1.01';
+const version = '1.02';
 const emit = defineEmits(['toggleUpdates']);
 
 const toggleUpdates = () => {
