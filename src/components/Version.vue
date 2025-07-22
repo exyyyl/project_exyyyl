@@ -18,11 +18,17 @@ const toggleUpdates = () => {
 <style scoped>
 .version {
   font-size: 12px;
-  background-color: #ffffff;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
   padding: 5px 10px;
   border-radius: 5px;
   font-weight: 600;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.version:hover {
+  opacity: 0.8;
 }
 
 /* Мобильная адаптация */

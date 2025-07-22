@@ -45,12 +45,13 @@ const closeList = () => {
   position: absolute;
   top: calc(100% + 5px);
   right: 0;
-  background-color: #1a1a1a;
-  border: 1px solid #fff;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   min-width: 320px;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
 }
 
 .updates-header {
@@ -58,20 +59,20 @@ const closeList = () => {
   justify-content: space-between;
   align-items: center;
   padding: 15px 20px 10px 20px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .updates-header h3 {
   margin: 0;
   font-size: 14px;
-  color: #fff;
+  color: var(--text-color);
   font-weight: 600;
 }
 
 .close-btn {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--text-color);
   font-size: 16px;
   cursor: pointer;
   padding: 0;
@@ -81,11 +82,12 @@ const closeList = () => {
   align-items: center;
   justify-content: center;
   border-radius: 3px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .close-btn:hover {
-  background-color: #333;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
 }
 
 .updates-content {
@@ -100,8 +102,8 @@ const closeList = () => {
   gap: 12px;
   padding: 12px 20px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  border-bottom: 1px solid #2a2a2a;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .update-item:last-child {
@@ -109,24 +111,30 @@ const closeList = () => {
 }
 
 .update-item:hover {
-  background-color: #2a2a2a;
+  background-color: var(--accent-color);
+}
+
+.update-item:hover .update-title {
+  color: var(--bg-color);
 }
 
 .update-version {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
   padding: 4px 8px;
   border-radius: 4px;
   font-size: 10px;
   font-weight: 600;
   min-width: 40px;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .update-title {
-  color: #fff;
+  color: var(--text-color);
   font-size: 12px;
   flex: 1;
+  transition: color 0.3s ease;
 }
 
 /* Мобильная адаптация */

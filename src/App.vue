@@ -5,17 +5,20 @@ import Layout from './components/Layout.vue';
 import IconComponent from './components/IconComponent.vue';
 import UpdatesList from './components/UpdatesList.vue';
 import UpdateDetails from './components/UpdateDetails.vue';
+import ThemeToggle from './components/ThemeToggle.vue';
 
 const activeTab = ref('PROJECTS');
 
 const tabs = [
   { name: 'PROJECTS', content: 'Скоро тут будут проектики' },
   { name: 'LAB', content: 'Идеи для экспериментов' },
-  { name: 'GAMES', content: 'Тут когда-нибудь будут игры' }
+  { name: 'GAMES', content: 'Тут когда-нибудь будут игры' },
+  { name: '???', content: '...' }
 ];
 
 const updates = ref([
   { id: 1, version: '1.01', title: 'Первый апдейт', description: '- Мини обнова, добавляющая детали обновлений.' },
+  { id: 2, version: '1.02', title: 'Обновление визуала', description: '- Добавлена возможность переключения темы.' },
 ]);
 
 const selectedUpdate = ref<{ id: number; version: string; title: string; description: string; } | null>(null);
@@ -57,13 +60,16 @@ const closeUpdateDetails = () => {
       </div>
     </div>
 
-    <ul class="header-menu">
-      <li v-for="tab in tabs" :key="tab.name">
-        <a href="#" @click.prevent="activeTab = tab.name" :class="{ active: activeTab === tab.name }">
-          {{ tab.name }}
-        </a>
-      </li>
-    </ul>
+    <div class="header-right">
+      <ul class="header-menu">
+        <li v-for="tab in tabs" :key="tab.name">
+          <a href="#" @click.prevent="activeTab = tab.name" :class="{ active: activeTab === tab.name }">
+            {{ tab.name }}
+          </a>
+        </li>
+      </ul>
+      <ThemeToggle />
+    </div>
   </header>
 
   <main>
@@ -88,8 +94,8 @@ const closeUpdateDetails = () => {
       <IconComponent 
         :name="tab.name as 'PROJECTS' | 'LAB' | 'GAMES'"
         :size="24"
-        :color="activeTab === tab.name ? '#000' : '#fff'"
-        :backgroundColor="activeTab === tab.name ? '#fff' : '#000'"
+        :color="activeTab === tab.name ? 'var(--bg-color)' : 'var(--text-color)'"
+        :isActive="activeTab === tab.name"
         class="nav-icon"
       />
       <span class="bottom-nav-label">{{ tab.name }}</span>
@@ -117,19 +123,26 @@ const closeUpdateDetails = () => {
 header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .logo-text {
   font-size: 24px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .logo-text a {
   text-decoration: none;
-  color: #fff;
+  color: var(--text-color);
   cursor: pointer;
   transition: opacity 0.3s;
 }
@@ -151,7 +164,6 @@ header {
 
 .header-menu {
   display: flex;
-  margin-left: 20px;
   padding: 0;
   gap: 10px;
   flex-wrap: wrap;
@@ -165,18 +177,18 @@ header {
 
 .header-menu li a {
   text-decoration: none;
-  color: #fff;
+  color: var(--text-color);
   background-color: transparent;
   padding: 10px 20px;
   border-radius: 10px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
   display: block;
   touch-action: manipulation;
 }
 
 .header-menu li a.active {
-  background-color: #ffffff;
-  color: #000;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
 }
 
 .header-menu li a:hover {
@@ -200,8 +212,8 @@ header {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #1a1a1a;
-  border-top: 1px solid #fff;
+  background-color: var(--secondary-bg);
+  border-top: 1px solid var(--border-color);
   display: none; /* По умолчанию скрываем */
   z-index: 1000;
   padding: 10px 0;
@@ -220,7 +232,7 @@ header {
 }
 
 .bottom-nav-item.active {
-  background-color: #ffffff;
+  background-color: var(--accent-color);
   border-radius: 8px;
   margin: 0 8px;
 }
@@ -233,11 +245,11 @@ header {
 }
 
 .bottom-nav-item.active .bottom-nav-label {
-  color: #000;
+  color: var(--bg-color);
 }
 
 .bottom-nav-item:not(.active) .bottom-nav-label {
-  color: #fff;
+  color: var(--text-color);
 }
 
 .bottom-nav-item:active {
@@ -271,6 +283,10 @@ main {
 
   .logo-text {
     font-size: 18px;
+  }
+
+  .header-right {
+    gap: 10px;
   }
 
   .header-menu {

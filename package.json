@@ -12,6 +12,7 @@
     "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
+    "lucide-vue-next": "^0.525.0",
     "tsparticles": "^3.8.1",
     "vue": "^3.5.13",
     "vue-particles": "^1.0.9"

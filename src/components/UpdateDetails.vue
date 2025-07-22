@@ -46,14 +46,15 @@ const closeModal = () => {
 }
 
 .modal-content {
-  background-color: #1a1a1a;
-  border: 1px solid #fff;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   max-width: 500px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
 }
 
 .modal-header {
@@ -61,20 +62,20 @@ const closeModal = () => {
   justify-content: space-between;
   align-items: center;
   padding: 20px 25px 15px 25px;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .modal-header h2 {
   margin: 0;
   font-size: 18px;
-  color: #fff;
+  color: var(--text-color);
   font-weight: 600;
 }
 
 .close-btn {
   background: none;
   border: none;
-  color: #fff;
+  color: var(--text-color);
   font-size: 20px;
   cursor: pointer;
   padding: 0;
@@ -84,11 +85,12 @@ const closeModal = () => {
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .close-btn:hover {
-  background-color: #333;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
 }
 
 .modal-body {
@@ -96,18 +98,19 @@ const closeModal = () => {
 }
 
 .version-badge {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 12px;
   font-weight: 600;
   display: inline-block;
   margin-bottom: 15px;
+  transition: all 0.3s ease;
 }
 
 .modal-body p {
-  color: #fff;
+  color: var(--text-color);
   font-size: 14px;
   line-height: 1.6;
   margin: 0;

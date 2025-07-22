@@ -27,12 +27,13 @@ const props = withDefaults(defineProps<Props>(), {
   justify-content: center;
   width: 100%;
   flex: 1;
-  border: 1px solid #fff;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 40px;
-  color: #fff;
+  color: var(--text-color);
   box-sizing: border-box;
   overflow: hidden;
+  transition: all 0.3s ease;
 }
 
 .layout-content {
